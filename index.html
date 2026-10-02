@@ -4,44 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ytqd</title>
-    <link rel="icon" type="image/png" href="images/ytqdlogo.png">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="images/png" href="images/ytqdlogo.png">
     <style>
         body{
-          background-color: black;
-          color: white;
-          font-family: serif;
-          text-align: center;
-          font-size: 1em;
+            background-color: black;
+            color: white;
+            font-family: serif;
+            text-align: center;
+            font-size: 1em;
         }
         h1{
-          font-family: serif;
-          text-align: center;
-          font-size: 4em;
-          margin: 5%;
+            font-family: serif;
+            text-align: center;
+            font-size: 4em;
+            margin: 5%;
         }
         button{
-          font-family: serif;
-          font-size: 1em;
-          padding: 10px;
+            font-family: serif;
+            font-size: 1em;
+            padding: 10px;
+        }
+        h6{
+            font-color: gray;
+            text-align: right;
+            margin-right:15%;
         }
     </style>
 </head>
 <body>
-    <h1 id="title">ytqd</h1>
+    <h1>ytqd</h1>
     
     <button type="button" id="random">random</button>
 
-    <br> <img src = "image" title = "title" width = "50%">
+    <br> <img id = "image" src = "images/1.png" width = "50%">
     <br> <p id="caption"></p>
 
     <button onclick="document.getElementById('title').scrollIntoView({behavior: 'smooth'})" type="button">go to top.</button>
-    
-  <script>
+
+    <h6 id = "credits"></h6>
+
+    <script>
     const images = [
         { 
             ima: 'images/1.png',
-            tit:'found this image on wikipedia and edited it https://commons.wikimedia.org/wiki/File:Pselectin.PNG',
+            cred:'found this image on wikipedia and edited it https://commons.wikimedia.org/wiki/File:Pselectin.PNG',
             cap: 'a really cool p-selectin'
         }
     ];
@@ -53,13 +59,13 @@
         const random = Math.floor(Math.random() * images.length);
         const selected = images[random];
          document.getElementById('image').src = selected.ima;
-        document.getElementById('title').textContent = selected.tit;
+        document.getElementById('credits').textContent = selected.cred;
         document.getElementById('caption').textContent = selected.cap;
     }
 
     randoming();
 
-    button.addEvent Listener('click', randoming);
+    button.addEventListener('click', randoming);
   </script>
 </body>
 </html>
