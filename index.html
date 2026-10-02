@@ -17,7 +17,7 @@
             font-family: serif;
             text-align: center;
             font-size: 4em;
-            margin: 5%;
+            margin: 1.5% 3% 1.5% 15px;
         }
         button{
             font-family: serif;
@@ -31,15 +31,24 @@
         }
         #logobo{
             float: left;
-            height: 4em;
+            height: 2.8em;
+        }
+        #heading{
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
 <body>
+    <div id = "heading">
     <img id = "logobo" src = "images/anemoiaicon.png">
     <h1>anemoia</h1>
-    
+    </div>
+
+    <button type="button" id="backward"><</button>
     <button type="button" id="random">random</button>
+    <button type="button" id="forward">></button>
 
     <br> <img id = "image" src = "images/1.png" width = "50%">
     <br> <p id="caption"></p>
