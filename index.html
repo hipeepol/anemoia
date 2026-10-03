@@ -12,6 +12,7 @@
             font-family: serif;
             text-align: center;
             font-size: 1em;
+            height: 100%;
         }
         h1{
             font-family: serif;
@@ -25,9 +26,7 @@
             padding: 10px;
         }
         h6{
-            font-color: gray;
-            text-align: right;
-            margin-right: 15%;
+            color: gray;
         }
         #logobo{
             float: left;
@@ -38,48 +37,93 @@
             justify-content: center;
             align-items: center;
         }
+        #footer{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color:white;
+            color:black;
+            margin:0%;
+        }
+        a{
+            color: black;
+        }
     </style>
 </head>
 <body>
     <div id = "heading">
     <img id = "logobo" src = "images/anemoiaicon.png">
-    <h1>anemoia</h1>
+    <h1 id = "title">anemoia</h1>
     </div>
 
-    <button type="button" id="backward"><</button>
+    <button type="button" id="backward">&lt;</button>
     <button type="button" id="random">random</button>
-    <button type="button" id="forward">></button>
+    <button type="button" id="forward">&gt;</button>
 
-    <br> <img id = "image" src = "images/1.png" width = "50%">
+    <br><br> <img id = "image" src = "images/1.png" width = "35%">
     <br> <p id="caption"></p>
-
-    <button onclick="document.getElementById('title').scrollIntoView({behavior: 'smooth'})" type="button">go to top.</button>
-
     <h6 id = "credits"></h6>
+
+    <button onclick="document.getElementById('title').scrollIntoView({behavior: 'smooth'})" type="button">go to top</button>
+    <br><br>
+
+    <div id = "footer">
+        <p>made by waffl - <a href="https://github.com/hipeepol">github</a> - comic posted on [</p>
+         <p id = "date"></p>]
+    </div>
 
     <script>
     const images = [
-        { 
+        {
             ima: 'images/1.png',
             cred:'found this image on wikipedia and edited it https://commons.wikimedia.org/wiki/File:Pselectin.PNG',
-            cap: 'a really cool p-selectin'
+            cap: 'a really cool p-selectin',
+            day: "3 Jun 2026"
+        },
+        {
+            ima: 'images/2.png',
+            cred:'',
+            cap: 'but nobody came... because it is just a game, is it not?',
+            day: "1 Oct 2026"
+        },
+        {
+            ima: 'images/3.png',
+            cred:'credit to xkcd for being awesome',
+            cap: 'you should ignore the fact that i cant code good ui either',
+            day: "1 Oct 2026"
         }
     ];
       
-    const img = document.getElementById('image');
-    const button = document.getElementById('random');
+    const randomer = document.getElementById('random');
+    const backwarder = document.getElementById('backward');
+    const forwarder = document.getElementById('forward');
+
+    let selected = 0;
+
+    function display(choose){
+        selected = choose;
+        const select = images[selected];
+        document.getElementById('image').src = select.ima;
+        document.getElementById('credits').textContent = select.cred;
+        document.getElementById('caption').textContent = select.cap;
+        document.getElementById('date').textContent = select.day;
+    }
 
     function randoming() {
-        const random = Math.floor(Math.random() * images.length);
-        const selected = images[random];
-         document.getElementById('image').src = selected.ima;
-        document.getElementById('credits').textContent = selected.cred;
-        document.getElementById('caption').textContent = selected.cap;
+        display(Math.floor(Math.random() * images.length));
+    }
+    function forward(){
+        display((selected + 1) % images.length);
+    }
+    function backward(){
+        display(((selected - 1) + images.length) % images.length);
     }
 
     randoming();
 
-    button.addEventListener('click', randoming);
+    randomer.addEventListener('click', randoming);
+    forwarder.addEventListener('click', forward);
+    backwarder.addEventListener('click', backward);
   </script>
 </body>
 </html>
