@@ -112,7 +112,7 @@
     const backwarder = document.getElementById('backward');
     const forwarder = document.getElementById('forward');
     const springforward = document.getElementById('last');
-    const sringwayback = document.getElementById('first');
+    const fallwayback = document.getElementById('first');
 
     let selected = 0;
 
@@ -132,7 +132,7 @@
         display((selected + 1) % images.length);
     }
     function superforward(){
-        display((-1) % images.length)
+        display(images.length - (1))
     }
     function backward(){
         display(((selected - 1) + images.length) % images.length);
