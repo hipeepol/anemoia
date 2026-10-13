@@ -141,8 +141,8 @@
         display(0)
     }
 
-    display((selected - 1) % images.length);
-
+    display(images.length - (1));
+        
     randomer.addEventListener('click', randoming);
     forwarder.addEventListener('click', forward);
     backwarder.addEventListener('click', backward);
