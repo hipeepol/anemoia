@@ -56,9 +56,11 @@
     <h1 id = "title">anemoia</h1>
     </div>
 
+    <button type="button" id="first">&lt;|</button>
     <button type="button" id="backward">&lt;</button>
     <button type="button" id="random">random</button>
     <button type="button" id="forward">&gt;</button>
+    <button type="button" id="last">|&gt;</button>  
 
     <br><br> <img id = "image" src = "images/1.png" width = "35%">
     <br> <p id="caption"></p>
@@ -109,6 +111,8 @@
     const randomer = document.getElementById('random');
     const backwarder = document.getElementById('backward');
     const forwarder = document.getElementById('forward');
+    const springforward = document.getElementById('last');
+    const sringwayback = document.getElementById('first');
 
     let selected = 0;
 
@@ -127,15 +131,23 @@
     function forward(){
         display((selected + 1) % images.length);
     }
+    function superforward(){
+        display((-1) % images.length)
+    }
     function backward(){
         display(((selected - 1) + images.length) % images.length);
     }
+    function superbackward(){
+        display(0)
+    }
 
-    randoming();
+    display((selected - 1) % images.length);
 
     randomer.addEventListener('click', randoming);
     forwarder.addEventListener('click', forward);
     backwarder.addEventListener('click', backward);
+    springforward.addEventListener('click', superforward);
+    fallwayback.addEventListener('click', superbackward);
   </script>
 </body>
 </html>
