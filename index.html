@@ -48,6 +48,17 @@
         a{
             color: black;
         }
+        #toc{
+            display: flex;
+            flex-wrap:wrap;
+            justify-content:left;
+            gap: 4px;
+        }
+        #toc button{
+            width:35px;
+            height:35px;
+            padding:4px;
+        }
     </style>
 </head>
 <body>
@@ -73,6 +84,8 @@
         <p>made by waffl - <a href="https://github.com/hipeepol">github</a> - <a href="https://hipeepol.straw.page">stupid website</a> - comic posted on [</p>
          <p id = "date"></p>]
     </div>
+
+    <br> <div id="toc"></div>
 
     <script>
     const images = [
@@ -126,6 +139,8 @@
     const springforward = document.getElementById('last');
     const fallwayback = document.getElementById('first');
 
+    const addtoc = document.getElementById('toc');
+
     let selected = 0;
 
     function display(choose){
@@ -160,6 +175,17 @@
     backwarder.addEventListener('click', backward);
     springforward.addEventListener('click', superforward);
     fallwayback.addEventListener('click', superbackward);
+
+    for(let i = 0; i<images.length; i++){
+        const addbutton = document.createElement('button');
+        addbutton.textContent = i+1;
+        addbutton.addEventListener('click', function(){
+            display(i);
+            document.getElementById('title').scrollIntoView({behavior: 'smooth'});
+
+        })
+        addtoc.appendChild(addbutton);
+    }
   </script>
 </body>
 </html>
